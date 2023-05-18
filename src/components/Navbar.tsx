@@ -40,7 +40,7 @@ const Navbar = () => {
         isOpen={showModal}
         onRequestClose={() => setShowModal(false)}
         contentLabel="Add Bot Modal"
-        className="border-b-0 border-r-0 border-l-0 border-t-4 w-[500px] h-[500px] bg-background absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col p-4 s border-t-borderColor rounded-xl"
+        className="border-b-0 border-r-0 border-l-0 border-t-4 md:w-[500px] h-[500px] bg-background absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col p-4 s border-t-borderColor rounded-xl"
         overlayClassName="bg-black/50 fixed top-0 left-0 right-0 bottom-0"
       >
         <AddRobotForm onCloseModal={() => setShowModal(false)} />
