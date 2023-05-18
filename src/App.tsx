@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Modal from "react-modal";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import useRobotStore, { RobotStoreType } from "./store/useRobotStore";
+import Robot from "./pages/Robot";
 
-function App() {
+Modal.setAppElement("#root");
+
+const App: React.FC = () => {
+  const refreshList = useRobotStore(
+    (state: RobotStoreType) => state.refreshList
+  );
+
+  useEffect(() => {
+    refreshList();
+  }, [refreshList]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className=" bg-background h-screen overflow-auto ">
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/robot/:id" element={<Robot />} />
+        </Routes>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;
